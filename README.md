@@ -24,3 +24,23 @@ V8 -> JS engine -> JIT (Compilation)
 # Environment Variables
 
 - Access using process.env.VARIABLE_NAME
+
+# NPM
+
+- can be used to install dependencies
+- Version: Major.Minor.Patch (1.0.0)
+
+- ~ -> Only Patch allowed
+- ^ -> Minor and patch allowed
+
+- Dependency: npm install --save-dev/-S
+- Dev Dependency: npm install --dev/-D
+
+Useful npm commands
+
+- npm init
+- npm install -g <package_name>
+- npm install --save-dev <package_name>
+- npm uninstall <package_name>
+- npm update
+- npm install
