@@ -44,3 +44,22 @@ Useful npm commands
 - npm uninstall <package_name>
 - npm update
 - npm install
+
+# Event Loop
+
+Synchronous/Blocking - executed sequentially
+Asynchronous/Non-blocking - x time
+
+task 1
+task 2 - x second
+task 3
+task 4
+
+- JS is synchronous and is single-threaded
+- Node is asynchronous
+
+# Typescript
+
+- programming language, superset set of JS
+- is strongly typed
+- Typescript files have to be "transpiled" to JS

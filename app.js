@@ -19,5 +19,5 @@ printName('Joe');
 // }, 2000);
 
 // To access environment variables
-// Provide variables in terminal as NAME=Joe ADDRESS=addr node app.js
+// Provide variables in terminal as: NAME=Joe ADDRESS=addr node app.js
 // console.log('Print env variables', process.env.NAME, process.env.ADDRESS);
