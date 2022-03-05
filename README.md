@@ -63,3 +63,8 @@ task 4
 - programming language, superset set of JS
 - is strongly typed
 - Typescript files have to be "transpiled" to JS
+
+# Express
+
+- web development framework for Node.js
+- server-side/backend framework which is used for API or rendering apps
