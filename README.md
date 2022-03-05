@@ -2,67 +2,61 @@
 
 - is NOT language or library or framework
 - is a JS runtime environment
+- written by: Ryan Dhal in 2009
+- contains JS Engine - V8 (Chrome), SpiderMonkey (Firefox), Chakra (Edge)
+- JS Engine executes JS using JIT compilation
 
-- Created By: Ryan Dhal
-- Contains JS Engine -> V8 (Chrome), SpiderMonkey (Firefox), Chakra (Edge)
-- JS engine executes JS
+Browser includes: `document`, `window` objects
 
-Browser -> document, window
-Node -> 'global' object
-provides modules: process, console, fs, event
+Node includes:
 
-V8 -> JS engine -> JIT (Compilation)
+- `global` object
+- provides modules: process, console, fs, event
 
-# Modules
+## Modules
 
-- logic is encapsulated
+- logic/code is encapsulated
 
-# Exit Node
+To exit node: `process.exit()`
 
-- use process.exit()
+## Environment Variables
 
-# Environment Variables
+- provided either using `.env` file or from terminal as `VARIABLE_NAME=VARIABLE_VALUE node file.js`
+- accessed as `process.env.VARIABLE_NAME`
 
-- Access using process.env.VARIABLE_NAME
+## NPM
 
-# NPM
+- can be used to manage dependencies
+- Semantic Versioning (SemVer) Convention: Major.Minor.Patch (1.0.0)
+  - ~ = update future Patch versions
+  - ^ = update future Minor/Patch versions
+- Dependency [required for runtime]: `npm install --save-dev/-S <package_name>`
+- Dev Dependency [required for development]: `npm install --dev/-D <package_name>`
 
-- can be used to install dependencies
-- Version: Major.Minor.Patch (1.0.0)
+NPM commands:
 
-- ~ -> Only Patch allowed
-- ^ -> Minor and patch allowed
+```
+npm init
+npm install -g <package_name>
+npm install --save-dev/-S <package_name>
+npm install --dev/-D <package_name>
+npm uninstall <package_name>
+npm update
+npm install
+npm ci
+```
 
-- Dependency: npm install --save-dev/-S
-- Dev Dependency: npm install --dev/-D
+## Event Loop
 
-Useful npm commands
-
-- npm init
-- npm install -g <package_name>
-- npm install --save-dev <package_name>
-- npm uninstall <package_name>
-- npm update
-- npm install
-
-# Event Loop
-
-Synchronous/Blocking - executed sequentially
-Asynchronous/Non-blocking - x time
-
-task 1
-task 2 - x second
-task 3
-task 4
-
-- JS is synchronous and is single-threaded
-- Node is asynchronous
+- **Synchronous/Blocking** - tasks are executed one at a time and sequentially after previous one is complete
+- **Asynchronous/Non-blocking** - tasks maybe not be completed in exact time so other tasks are executed before previous task
+- JS is **synchronous** and is **single-threaded**
+- Node is **asynchronous**
 
 # Typescript
 
-- programming language, superset set of JS
-- is strongly typed
-- Typescript files have to be "transpiled" to JS
+- strongly typed programming language, superset set of JS
+- Typescript code have to be **transpiled** to JS
 
 # Express
 
