@@ -1,0 +1,27 @@
+GET http://localhost:3000/student
+
+###
+GET http://localhost:3000/student/3
+
+
+### 
+POST http://localhost:3000/student
+Content-Type: application/json
+
+{
+    "name": "Sgm",
+    "address": "Nepal"
+}
+
+###
+DELETE http://localhost:3000/student/5
+
+
+###
+PUT http://localhost:3000/student/3
+Content-Type: application/json
+
+{
+    "name": "Sugaaa",
+    "address": "Nepallll"
+}

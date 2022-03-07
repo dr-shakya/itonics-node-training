@@ -1,0 +1,29 @@
+### /
+GET http://localhost:3000/item
+### /:id
+GET http://localhost:3000/item/5
+###
+
+
+### post
+POST http://localhost:3000/item
+Content-Type: application/json
+
+{
+    "title": "Peter Parker",
+    "body":"est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+}
+
+
+### delete
+DELETE http://localhost:3000/item/7
+
+
+### put
+PUT http://localhost:3000/item/9
+Content-Type: application/json
+
+{
+    "title": "Pittar Perkur",
+    "body":"que paso???"
+}
