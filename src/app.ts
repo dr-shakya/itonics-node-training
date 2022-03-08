@@ -40,8 +40,13 @@ app.get('/items/:id', async (req: Request, res: Response) => {
 
 // POST /items
 app.post('/items', async(req: Request, res: Response)=>{
+  let item = {
+    id:req.params.id,
+    title:req.body.title,
+    body: req.body.body,
+             };
  try{
-  const data = await newDatas();
+  const data = await newDatas(item);
    res.status(200).json(data);
  }catch(err){ res.status(500).json({message: err.message}}
 
@@ -51,24 +56,26 @@ app.post('/items', async(req: Request, res: Response)=>{
 // PUT /items/:id
  app.put('/items/:id', (req: Request, res: Response)=>{
  const id: number = Number(req.params.id);
+ let item = {
+    id:req.params.id,
+    title:req.body.title,
+    body: req.body.body,
+            };
  
-    const editedData = await editData(id);\
+    const editedData = await editData(id, item);\
     if(!editedData){
       res.status(500).json({"message": "Cannot be edited"})
-    }else
-    {
-      res.status(200).json(editedData);
     }
-  
- 
+     res.status(200).json(editedData);
  })
 
 // DELETE /items
 
 // DELETE /items/:id
-  app.deleteData('items/:id', (req: Request, res: Response)=>{
+  app.delete('items/:id', (req: Request, res: Response)=>{
   const id = Number(req.params.id);
-   delete(id)
+   const dataAfterDelete = deleteData(id);
+    res.status(200).json(dataAfaterDelete)
   
   })
 
