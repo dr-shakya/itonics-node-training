@@ -1,6 +1,6 @@
 import express, { Express, Request, Response } from 'express';
 import { Items } from './Contract/items';
-import { findAll, findById } from './Service/items.service';
+import { findAll, findById, newDatas, editData, delete } from './Service/items.service';
 import { students } from './students';
 const app: Express = express();
 
@@ -39,12 +39,38 @@ app.get('/items/:id', async (req: Request, res: Response) => {
 });
 
 // POST /items
+app.post('/items', async(req: Request, res: Response)=>{
+ try{
+  const data = await newDatas();
+   res.status(200).json(data);
+ }catch(err){ res.status(500).json({message: err.message}}
+
+
+})
 
 // PUT /items/:id
+ app.put('/items/:id', (req: Request, res: Response)=>{
+ const id: number = Number(req.params.id);
+ 
+    const editedData = await editData(id);\
+    if(!editedData){
+      res.status(500).json({"message": "Cannot be edited"})
+    }else
+    {
+      res.status(200).json(editedData);
+    }
+  
+ 
+ })
 
 // DELETE /items
 
 // DELETE /items/:id
+  app.delete('items/:id', (req: Request, res: Response)=>{
+  const id = Number(req.params.id);
+   delete(id)
+  
+  })
 
 // Start server
 app.listen(port, () => {
