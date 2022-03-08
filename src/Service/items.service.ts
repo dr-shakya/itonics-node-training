@@ -13,27 +13,28 @@ export const findById = async (id: number) => {
 
 // TODO Create new functions: add, update and delete
 // add data
-export const newDatas = async() =>{
- let newData = {
-   id: req.params.id,
-   title: req.body.title,
-   body: req.body.body,
- };
- mockItems.push(newData);
-  return promise.resolve(newData);
+export const newDatas = async(item: Items) =>{
+  mockItems.push(item);
+  return Promise.resolve(mockItems);
 }
 
-export const editData = async(id: number) =>{
-  if(mockItems[id])
+export const editData = async(id: number, item: Items) =>{
+  existingItem = mockItems.find((item)=> item.id === id);
+  if(existingItem)
   {
-    mockItems[id].title = req.body.title;
-    mockItems[id].body = req.body.body;
-    return Promise.resolve(mockItems);
+    existingItem.id = item.id;
+    existingItem.title = item.title;
+    existingItem.body = item.body;
+    return Promise.resolve(existingItem);
   }
 }
 export const deleteData = async(id: number) =>{
-if(mockItems[id]){
-  mockItems.filter((item)=>item!=mockItems[id])
-}
+  existingItem = mockItems.find((item)=> item.id === id);
+  if(existingItem)
+  {
+    const mock = mockItems.filter((item)=>item.id != existingItem.id)
+    return Promise.resolve(mock);
+  }
+
 
 }
