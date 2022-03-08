@@ -1,6 +1,6 @@
 import express, { Express, Request, Response } from 'express';
 import { Items } from './Contract/items';
-import { findAll, findById, newDatas, editData, delete } from './Service/items.service';
+import { findAll, findById, newDatas, editData, deleteData } from './Service/items.service';
 import { students } from './students';
 const app: Express = express();
 
@@ -66,7 +66,7 @@ app.post('/items', async(req: Request, res: Response)=>{
 // DELETE /items
 
 // DELETE /items/:id
-  app.delete('items/:id', (req: Request, res: Response)=>{
+  app.deleteData('items/:id', (req: Request, res: Response)=>{
   const id = Number(req.params.id);
    delete(id)
   
