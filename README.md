@@ -62,3 +62,7 @@ npm ci
 
 - web development framework for Node.js
 - server-side/backend framework which is used for API or rendering apps
+
+# Database - postgres/mysql
+
+# ORM - typeorm/sequelize

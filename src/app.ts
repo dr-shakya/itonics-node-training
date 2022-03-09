@@ -1,18 +1,37 @@
 import express, { Express } from 'express';
 import itemsRouter from './Router/items.router';
 import studentsRouter from './Router/students.router';
-const app: Express = express();
 
-const port = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 
-// STUDENTS Endpoint
-app.use(express.json());
-app.use('/students', studentsRouter);
+class Server {
+  private app: Express;
 
-// ITEMS Endpoint
-app.use('/items', itemsRouter);
+  constructor() {
+    this.app = express();
+    this.setupConfig();
+    this.setupRoutes();
+  }
+
+  public setupConfig(): void {
+    this.app.use(express.json());
+  }
+
+  public setupRoutes(): void {
+    // STUDENTS endpoint
+    this.app.use('/students', studentsRouter);
+    // ITEMS Endpoint
+    this.app.use('/items', itemsRouter);
+  }
+
+  public start(): void {
+    this.app.listen(PORT, () => {
+      console.log('Listening on port:', PORT);
+    });
+  }
+}
+
+const server = new Server();
 
 // Start server
-app.listen(port, () => {
-  console.log('Listening on port:', port);
-});
+server.start();
