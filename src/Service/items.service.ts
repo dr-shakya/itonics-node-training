@@ -1,3 +1,4 @@
+import { Items } from '../Contract/items';
 import { mockItems } from '../Mock/mockItems';
 
 // Get all items
@@ -11,4 +12,18 @@ export const findById = async (id: number) => {
   return Promise.resolve(item);
 };
 
-// TODO Create new functions: add, update and delete
+export const add = async (item: Items) => {
+  const id = Date.now();
+  const createdItem = { ...item, id };
+  mockItems.push(createdItem);
+  return Promise.resolve(createdItem);
+};
+
+export const update = async (id: number, item: Items) => {
+  const existingItem = mockItems.find((mockItem) => mockItem.id === id);
+  if (!existingItem) {
+    return Promise.resolve(existingItem);
+  }
+  const updatedItem = { ...existingItem, ...item };
+  return Promise.resolve(updatedItem);
+};
