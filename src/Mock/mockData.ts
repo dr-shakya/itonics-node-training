@@ -1,6 +1,7 @@
-import { Items } from '../Contract/items';
+import { Item } from '../Contract/item';
+import { Student } from '../Contract/student';
 
-export let mockItems: Array<Items> = [
+export let mockItems: Array<Item> = [
   {
     id: 1,
     title: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
@@ -25,5 +26,16 @@ export let mockItems: Array<Items> = [
     id: 5,
     title: 'nesciunt quas odio',
     body: 'repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut'
+  }
+];
+
+export const mockStudents: Array<Student> = [
+  {
+    name: 'Joe',
+    address: 'KTM'
+  },
+  {
+    name: 'John',
+    address: 'PKR'
   }
 ];

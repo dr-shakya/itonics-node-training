@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { Items } from '../Contract/items';
+import { Item } from '../Contract/item';
 import { add, findAll, findById, update } from '../Service/items.service';
 
 const itemsRouter = express.Router();
@@ -7,7 +7,7 @@ const itemsRouter = express.Router();
 // GET /items
 itemsRouter.get('', async (req: Request, res: Response) => {
   try {
-    const items: Array<Items> = await findAll();
+    const items: Array<Item> = await findAll();
     res.status(200).json(items);
   } catch (error) {
     res.status(500).send('Internal Error');

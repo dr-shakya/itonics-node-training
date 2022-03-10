@@ -1,6 +1,9 @@
+require('dotenv').config();
 import express, { Express } from 'express';
+import { createConnection, getConnection } from 'typeorm';
 import itemsRouter from './Router/items.router';
 import studentsRouter from './Router/students.router';
+const { DB_DATABASE, DB_HOST, DB_PASSWORD, DB_USERNAME } = process.env;
 
 const PORT = process.env.PORT || 3000;
 
@@ -17,7 +20,20 @@ class Server {
     this.app.use(express.json());
   }
 
-  public setupRoutes(): void {
+  public async setupRoutes(): Promise<void> {
+    await createConnection({
+      name: 'test',
+      type: 'postgres',
+      host: DB_HOST,
+      port: 5432,
+      username: DB_USERNAME,
+      password: DB_PASSWORD,
+      database: DB_DATABASE,
+      synchronize: true
+    });
+
+    console.log(getConnection('test'));
+
     // STUDENTS endpoint
     this.app.use('/students', studentsRouter);
     // ITEMS Endpoint
