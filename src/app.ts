@@ -1,14 +1,17 @@
 require('dotenv').config();
+import 'reflect-metadata';
 import express, { Express } from 'express';
-import { createConnection, getConnection } from 'typeorm';
+import { createConnection } from 'typeorm';
+import { UserController } from './Controller/user.controller';
 import itemsRouter from './Router/items.router';
-import studentsRouter from './Router/students.router';
+import { User } from './Model/user.model';
 const { DB_DATABASE, DB_HOST, DB_PASSWORD, DB_USERNAME } = process.env;
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3003;
 
 class Server {
   private app: Express;
+  private userController!: UserController;
 
   constructor() {
     this.app = express();
@@ -29,15 +32,16 @@ class Server {
       username: DB_USERNAME,
       password: DB_PASSWORD,
       database: DB_DATABASE,
-      synchronize: true
+      synchronize: true,
+      entities: [User]
     });
 
-    console.log(getConnection('test'));
+    this.userController = new UserController();
 
-    // STUDENTS endpoint
-    this.app.use('/students', studentsRouter);
     // ITEMS Endpoint
     this.app.use('/items', itemsRouter);
+    // USERS Endpoint
+    this.app.use('/users', this.userController.getRouter());
   }
 
   public start(): void {
