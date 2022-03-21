@@ -25,7 +25,6 @@ class Server {
 
   public async setupRoutes(): Promise<void> {
     await createConnection({
-      name: 'test',
       type: 'postgres',
       host: DB_HOST,
       port: 5432,
