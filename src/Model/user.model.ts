@@ -13,4 +13,11 @@ export class User {
 
   @Column()
   public age!: number;
+
+  // @OneToOne(() => Picture)
+  // @JoinColumn()
+  // public picture!: Picture; // pictureId
+
+  // @OneToMany(() => Picture, (picture) => picture.id)
+  // public picture!: Array<Picture>; // pictureId
 }

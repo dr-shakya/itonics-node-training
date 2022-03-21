@@ -5,6 +5,7 @@ import { createConnection } from 'typeorm';
 import { UserController } from './Controller/user.controller';
 import itemsRouter from './Router/items.router';
 import { User } from './Model/user.model';
+import { Picture } from './Model/picture.model';
 const { DB_DATABASE, DB_HOST, DB_PASSWORD, DB_USERNAME } = process.env;
 
 const PORT = process.env.PORT || 3003;
@@ -32,7 +33,7 @@ class Server {
       password: DB_PASSWORD,
       database: DB_DATABASE,
       synchronize: true,
-      entities: [User]
+      entities: [User, Picture]
     });
 
     this.userController = new UserController();
